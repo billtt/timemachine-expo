@@ -22,7 +22,18 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./public/logo.png",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#000000",
+      "shortName": "TimeMachine",
+      "splash": {
+        "image": "./assets/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "experiments": {
+      "baseUrl": "/app"
     }
   }
 }
