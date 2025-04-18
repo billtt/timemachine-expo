@@ -3,7 +3,7 @@
  */
 
 const config = {
-    serverAddress: 'https://bill.tt/time'
+    serverAddress: 'https://time.bill.tt'
     // serverAddress: 'http://192.168.110.187:3000'
 };
 
