@@ -2,10 +2,11 @@ import {useEffect, useState} from "react";
 import {SafeAreaView, FlatList, StyleSheet, Text, View, RefreshControl, ActivityIndicator, Animated, Alert, StatusBar} from 'react-native';
 import { SearchBar, Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {RectButton} from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
+import * as Font from 'expo-font';
 
 import ReadMore from 'react-native-read-more-text';
 import ListSwipe from './ListSwipe';
@@ -26,6 +27,11 @@ export default function App() {
   const [searchText, setSearchText] = useState('');
   const [searchMode, setSearchMode] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    Font.loadAsync(Ionicons.font).then(() => setFontsLoaded(true));
+  }, []);
 
   const changeDate = (dayOffset:number) => {
     const newDate = new Date(date);
