@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {SafeAreaView, FlatList, StyleSheet, Text, View, RefreshControl, ActivityIndicator, Animated, Alert, StatusBar} from 'react-native';
-import { SearchBar, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
+import { Searchbar } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
@@ -75,10 +76,10 @@ export default function App() {
   };
 
   const onLogoutPress = () => {
-      Alert.alert('Sure to logout?', '', [
-          { text: 'Cancel', style: 'cancel', },
-          { text: 'OK', onPress: logout},
-      ]);
+      const ok = window.confirm('Sure to logout?');
+      if (ok) {
+        logout();
+      }
   };
 
   const loadList = async()=> {
@@ -221,10 +222,10 @@ export default function App() {
             if (_global.token === '') {
                 return;
             }
-          Alert.alert('Be careful...', 'Sure to delete this slice?', [
-              { text: 'Cancel', style: 'cancel', },
-              { text: 'OK', onPress: ()=>remove(item.id)},
-          ]);
+            const ok = window.confirm('Sure to delete?');
+            if (ok) {
+              remove(item.id);
+            }
       }
         if (action === 'edit') {
             showEditAsUpdate(item);
@@ -315,7 +316,9 @@ export default function App() {
               <Button style={styles.logoutButton} icon={{name: "logout", size: 24, color: "gray"}} type='clear' onPress={onLogoutPress}/>
           </View>
           <View style={styles.searchView}>
-              <SearchBar placeholder='Search' value={searchText} onChangeText={(text)=>{setSearchText(text)}} onSubmitEditing={search} onClear={clearSearch} platform='ios'/>
+              <Searchbar placeholder='Search' value={searchText} onChangeText={(text)=>{setSearchText(text)}}
+              onSubmitEditing={search} onClear={clearSearch} platform='default'
+              style={{backgroundColor: '#f5f5f5'}}/>
           </View>
           <View style={styles.dateView}>
               <Button type='clear' icon={{name: 'arrow-back-ios', size: 16, color: 'gray'}} onPress={()=>changeDate(-1)}></Button>
@@ -388,7 +391,9 @@ const styles = StyleSheet.create({
         width: 60
     },
   searchView: {
-    width: '100%',
+    width: '90%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   dateView: {
     width: '100%',
