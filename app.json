@@ -31,9 +31,6 @@
         "resizeMode": "contain",
         "backgroundColor": "#ffffff"
       }
-    },
-    "experiments": {
-      "baseUrl": "/app"
     }
   }
 }
