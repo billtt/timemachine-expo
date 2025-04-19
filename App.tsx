@@ -325,7 +325,7 @@ export default function App() {
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <input type="date" value={date.toISOString().slice(0, 10)} onChange={(e) => {
                     setDate(new Date(e.target.value));
-                  }}/>
+                  }} style={styles.dateInput}/>
                   <Button type='clear' title='Today' onPress={()=>setDate(new Date())} titleStyle={{fontSize: 14, color: 'gray'}}/>
               </View>
               <Button type='clear' icon={{name: 'arrow-forward-ios', size: 16, color: 'gray'}} onPress={()=>changeDate(1)}></Button>
@@ -444,5 +444,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         backgroundColor: 'lightblue',
         padding: 10,
+    },
+    dateInput: {
+        fontSize: 15
     },
 });

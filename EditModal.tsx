@@ -52,7 +52,7 @@ class EditModal extends Component<EditModalProps> {
                                 <TextInput multiline placeholder="What's up?" onChangeText={text => this.setState({content:text})} value={content} style={styles.input}/>
                                 <input type="datetime-local" value={Utils.toDateTimeLocalString(date)} onChange={(e) => {
                                     this.setState({date: new Date(e.target.value)});
-                                }}/>
+                                }} style={styles.dateInput}/>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '50%', marginTop: 20}}>
                                     <Button title='OK' type='clear' onPress={
                                         ()=>this.props.onOK(this.props.editingItem, content, date)}/>
@@ -90,6 +90,9 @@ const styles = StyleSheet.create({
         borderBottomColor: 'gray',
         fontSize: 16,
         outlineWidth: 0,
+    },
+    dateInput: {
+        fontSize: 15,
     },
 });
 
