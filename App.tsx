@@ -250,6 +250,12 @@ export default function App() {
             addSlice(content, addDate);
         }
   };
+  
+  const onReloadPress = () => {
+    // Simple confirm box (works in all browsers)
+    const ok = window.confirm('Reload the app and fetch the latest version?');
+    if (ok) window.location.reload();
+  };
 
   useEffect(() => {
     init();
@@ -312,6 +318,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
           <StatusBar barStyle='dark-content' />
           <View style={styles.titleView}>
+              <Button style={styles.reloadButton} icon={{name: "refresh", size: 24, color: "gray"}} type='clear' onPress={onReloadPress}/>
               <Text style={styles.titleText}>Time Machine</Text>
               <Button style={styles.logoutButton} icon={{name: "logout", size: 24, color: "gray"}} type='clear' onPress={onLogoutPress}/>
           </View>
@@ -384,7 +391,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
-        paddingLeft: 60,
+        paddingLeft: 20,
+    },
+    reloadButton: {
+      alignSelf: 'flex-start',
+        width: 40
     },
     logoutButton: {
       alignSelf: 'flex-end',
