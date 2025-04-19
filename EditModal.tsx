@@ -89,7 +89,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'gray',
         fontSize: 16,
+        outlineStyle: 'none',   // Safari & Chrome iOS
         outlineWidth: 0,
+        boxShadow: 'none',      // older Safari versions
     },
     dateInput: {
         fontSize: 15,
