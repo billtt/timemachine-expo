@@ -84,10 +84,12 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '90%',
+        height: 40,
         margin: 20,
         borderBottomWidth: 1,
         borderBottomColor: 'gray',
         fontSize: 16,
+        outlineWidth: 0,
     },
 });
 
